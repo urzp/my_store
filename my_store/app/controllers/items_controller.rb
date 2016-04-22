@@ -1,27 +1,40 @@
 class ItemsController < ApplicationController
+    
+    #/items/1 GET
+    def show
+    end
+    
+    
+    def new
+    end
+    
+    #/items/1/edit GET
+    def edit
+    end
+    
+    #/items POST
+    def create
+        render text: "item create"
+    end
+    
+    #/items/1 PUT
+    def update
+    end
+    
+    #/items/1 DELETE
+    def destroy
+    end
+    
     def index
         @items= Item.all
         render text: @items.map {|i| "  #{i.name} price #{i.price}$"}.join("<br/>")
     end    
     
-    def create
-         
-        @item=Item.create(article_params)
-        
-       # @item=Item.create(params[:item])
-       
-        p params
-        
-        #create?item[name]=car&item[description]=good+car&item[price]=500000&item[weight]=0&item[real]=1
-        
-        
-        #create?name=car&description=good+car&price=500000&weight=0&real=1
-        
-        render text: "#{@item.id}  #{@item.name} (#{!@item.new_record?})" 
-    end
+
     
     private
-  def article_params
+    
+    def item_params
       params.require(:item).permit(:name, :description, :price, :weight, :real )
   end
 end
