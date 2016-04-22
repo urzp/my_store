@@ -1,9 +1,16 @@
 class ItemsController < ApplicationController
     
+    def index
+        @items =Item.all    
+    end  
+    
+    
     #/items/1 GET
     def show
+        unless @item=Item.where(id: params[:id]).first
+           render text:  "Page not found", status: 404 
+       end   
     end
-    
     
     def new
     end
@@ -25,10 +32,7 @@ class ItemsController < ApplicationController
     def destroy
     end
     
-    def index
-        @items= Item.all
-        render text: @items.map {|i| "  #{i.name} price #{i.price}$"}.join("<br/>")
-    end    
+   
     
 
     

@@ -1,0 +1,8 @@
+<% @items.each do |i| %>
+
+<p><%= link_to  i.id, item_path(i)  %>
+ <%= i.name %>
+ 
+</p>
+
+<% end %>
