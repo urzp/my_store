@@ -1,8 +1,28 @@
-<% @items.each do |i| %>
+<h1>Items</h1>
 
-<p><%= link_to  i.id, item_path(i)  %>
- <%= i.name %>
+
+<% if @items.empty? %>
+    <b>Noitems in store</b>
+<% else %>
  
-</p>
+<table>
+    <tr>
+        <th>item id</th>
+        <th>Name</th>  
+        <th>Price</th>
+    </tr>
+
+<% @items.each do |i| %>
+<tr>  
+    <td><%= i.id  %></td>
+    <td><%= link_to i.name, item_path(i) %></td>   
+    <td><%= i.price %> руб.</td> 
+    <td><%= link_to "Редактировать", i,  method: :GET %></td> 
+    <td><%= link_to "Удалить", i, method: :delete, data: {confirm: "Пункт будет безвозвратно удален. Потвердить?"} %></td>   
+</tr>  
+<% end %>
+    
+</table>
 
 <% end %>
+
