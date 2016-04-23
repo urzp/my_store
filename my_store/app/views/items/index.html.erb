@@ -17,7 +17,7 @@
     <td><%= i.id  %></td>
     <td><%= link_to i.name, item_path(i) %></td>   
     <td><%= i.price %> руб.</td> 
-    <td><%= link_to "Редактировать", i,  method: :GET %></td> 
+    <td><%= link_to "Редактировать" , "items/"+i.id.to_s+"/edit" %></td> 
     <td><%= link_to "Удалить", i, method: :delete, data: {confirm: "Пункт будет безвозвратно удален. Потвердить?"} %></td>   
 </tr>  
 <% end %>
