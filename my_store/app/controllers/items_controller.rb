@@ -1,7 +1,17 @@
 class ItemsController < ApplicationController
     
-    before_filter :find_item, only: [:show, :edit, :update, :destroy]
+    before_filter :find_item, only: [:show, :edit, :update, :destroy, :upvote]
     before_filter :check_if_admin, only: [:edit, :update, :new, :create, :destroy]
+    
+    def expensive
+        @items = Item.where("price >300")
+        render "index"
+    end
+    
+    def upvote
+        @item.increment!(:votes_count)
+        redirect_to action: :index
+    end
     
     def index
         @items =Item.all    

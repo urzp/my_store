@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420085608) do
+ActiveRecord::Schema.define(version: 20160424171114) do
 
   create_table "items", force: :cascade do |t|
     t.float    "price"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160420085608) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "votes_count", default: 0
   end
 
   add_index "items", ["name"], name: "index_items_on_name"
