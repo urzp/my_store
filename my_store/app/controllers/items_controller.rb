@@ -76,10 +76,12 @@ class ItemsController < ApplicationController
     def check_if_admin
         #unless current_user.admin == true
         #render text: "Access denied", status: 404 unless params[:admin]
+        render_403 unless params[:admin]
     end
     
     def find_item
          @item =Item.find(params[:id])
+        render_404 unless @item
     end
     
     
